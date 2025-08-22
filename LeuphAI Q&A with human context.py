@@ -3,16 +3,27 @@
 from transformers import pipeline
 import torch
 import tkinter as tk
+from tkinter import ttk
 import platform
 import threading
+
+
+
 system_type = platform.system()
 root = tk.Tk()
 root.title("LeuphAI Q&A Chatbot DEMO: music centre")
 WINDOW_WIDTH = 700
 WINDOW_HEIGHT = 1000
 input_text_height = 8  # Number of lines for input
+button_pressed = False
 #main_text = "test"
 #input_text_height = WINDOW_HEIGHT // 3
+
+def enter(event=None):
+    global button_pressed
+    button_pressed = True
+    global user_question
+    user_question = input_text.get("1.0", tk.END)
 
 root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 
@@ -29,6 +40,17 @@ text['state'] = 'disabled'
 input_text = tk.Text(root)
 input_text.grid(row=1, column=0, sticky="ew")
 input_text['state'] = 'normal'
+input_text.bind('<Return>', enter)
+
+
+button = ttk.Button(
+   root,
+   text="ENTER",
+   command=enter
+)
+button.config(command=enter)
+button.grid(row=1, column=1, sticky="ew")
+button.state(['disabled'])
 
 root.grid_rowconfigure(0, weight=3)
 root.grid_rowconfigure(1, weight=1)
@@ -77,11 +99,14 @@ def ai_loop():
         context = file.read()
     while True:
         global user_question
-        user_question = input("You: ")
-        if user_question.lower() in ['exit', 'quit']:
-            print("Goodbye!")
-            break
-        else:
+        global button_pressed
+        #user_question = input("You: ")
+        #if input_text.get("1.0", tk.END) != "":
+            #button.state(['!disabled'])
+        #else:
+            #button.state(['disabled'])
+        if button_pressed:
+
             global result
             result = qa_pipeline(
                 context = context,
@@ -89,14 +114,24 @@ def ai_loop():
             )
             print("Bot:", result['answer'])
             root.after(0, post_response, user_question, result['answer'])
+            input_text.delete("1.0", tk.END)
+            button_pressed = False
 
 def post_response(user_question, answer):
     text['state'] = 'normal'
     text.insert(tk.END, f"You: {user_question}\nBot: {answer}\n")
     text['state'] = 'disabled'
 
-threading.Thread(target=ai_loop, daemon=True).start()
+def check_input_field():
+    content = input_text.get("1.0", tk.END).strip()
+    if content:
+        button.state(['!disabled'])
+    else:
+        button.state(['disabled'])
+    root.after(100, check_input_field)
 
+threading.Thread(target=ai_loop, daemon=True).start()
+threading.Thread(target=check_input_field, daemon=True).start()
 root.mainloop()
 
 
