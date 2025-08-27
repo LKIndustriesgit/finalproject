@@ -16,6 +16,7 @@ WINDOW_WIDTH = 700
 WINDOW_HEIGHT = 1000
 input_text_height = 8  # Number of lines for input
 button_pressed = False
+user_question = ""
 #main_text = "test"
 #input_text_height = WINDOW_HEIGHT // 3
 
@@ -30,7 +31,11 @@ root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 
 text = tk.Text(root)
 text.grid(row=0, column=0, sticky="nsew")
+text.insert(tk.END, "Welcome to this demo version of a Q&A Bot!\n Write any question concerning the range of music activities offered by the Leuphana University Lüneburg. \n")
+text.tag_add("colour", "1.0", "2.105")
+text.tag_config("colour", foreground="green")
 text['state'] = 'disabled'
+
 #text.insert(
 #    index='1.0',
 #    chars= main_text
@@ -70,7 +75,7 @@ if system_type == 'Windows':
 else:
     try:
 
-        photo = tk.PhotoImage(file='media/leuphana_logo.png')
+        photo = tk.PhotoImage(file='media/leuphana_logo_icon.png')
         root.iconphoto(False, photo)
     except tk.TclError:
         print("icon file not found.")
