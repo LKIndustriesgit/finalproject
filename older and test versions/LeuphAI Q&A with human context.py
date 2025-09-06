@@ -71,11 +71,11 @@ center_y = int(screen_height/2 - WINDOW_HEIGHT / 2)
 
 root.geometry(f'{WINDOW_WIDTH}x{WINDOW_HEIGHT}+{center_x}+{center_y}')
 if system_type == 'Windows':
-    root.iconbitmap('media/leuphana_logo.ico')
+    root.iconbitmap('media/leuphana_logo_icon.ico')
 else:
     try:
 
-        photo = tk.PhotoImage(file='media/leuphana_logo_icon.png')
+        photo = tk.PhotoImage(file='../media/leuphana_logo_icon.png')
         root.iconphoto(False, photo)
     except tk.TclError:
         print("icon file not found.")
@@ -100,7 +100,7 @@ def ai_loop():
     print("Type 'exit' to quit.")
     print("--------------------------------------------------")
 
-    with open("text/own text/music", "r") as file:
+    with open("../text/own text/music", "r") as file:
         context = file.read()
     while True:
         global user_question

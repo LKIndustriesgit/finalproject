@@ -107,7 +107,7 @@ def crawl(url):
     seen = set([url])
 
     os.makedirs(f"text/{local_domain}", exist_ok=True)
-    os.makedirs("processed", exist_ok=True)
+    os.makedirs("../processed", exist_ok=True)
 
     while queue:
         url = queue.pop()
