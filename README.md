@@ -1,6 +1,8 @@
 ### LeuphAI Q&A Chatbot Demo
 A README.md file is often the first thing people see from your project. Begin your README.md with a brief, compelling description of what your project does. Consider adding a feature image or demo GIF here to showcase your project visually.
 
+Studying can be very hard, right? There is so much to do, even after a whole year, I still discover things I wish I knew when I was starting out. Think of all the clubs, the sports teams, the ways of handling your curriculum... Well, now, there is a solution. 
+LeuphAI is a Chatbot providing answers related to studying at Leuphana University in Lüneburg. It comes with a TKinter GUI. This project is only a demo version focusing on issues concerning the musical ensembles of the university. I could not create a full version as I don't have the computing power on my device to run the context of the entire Leuphana website on my computer. There are also some files highlighting the paths I took creating this demo.
 <img src="media/leuphana_logo_icon.png" width="300">
 
 #### Installation
