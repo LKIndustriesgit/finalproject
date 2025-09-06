@@ -124,7 +124,7 @@ def ai_loop():
         print("Type 'exit' to quit.")
         print("--------------------------------------------------")
     #opening the prepared context
-    with open("../text/own text/music", "r") as file:
+    with open("../media/text/own text/music", "r") as file:
         context = file.read()
 
     global user_question #declaring the variable global is important to distinct from function-only vars

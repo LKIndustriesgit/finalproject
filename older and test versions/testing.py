@@ -34,7 +34,7 @@ print("📚 Leuphana QA Chatbot")
 print("Type 'exit' to quit.")
 print("--------------------------------------------------")
 
-with open("../text/own text/music", "r") as file:
+with open("../media/text/own text/music", "r") as file:
     context = file.read()
 
 while True:
