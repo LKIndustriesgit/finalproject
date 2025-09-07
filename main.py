@@ -29,8 +29,8 @@ root.title("LeuphAI Q&A Chatbot DEMO: music centre") #title on top
 root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}") #size
 
 #images must be assigned after a root window is created
-leuphana_image = tk.PhotoImage(file="../media/leuphana_text.png")
-enter_image = tk.PhotoImage(file="../media/enter.png") #both images for tkinter
+leuphana_image = tk.PhotoImage(file="media/leuphana_text.png")
+enter_image = tk.PhotoImage(file="media/enter.png") #both images for tkinter
 
 #creating main conversation protocol label
 text = tk.Text(root)
@@ -81,7 +81,7 @@ if system_type == 'Windows':
     root.iconbitmap('media/leuphana_logo_icon.ico')
 else:
     try:
-        photo = tk.PhotoImage(file='../media/leuphana_logo_icon.png') #png for all other OS except windows
+        photo = tk.PhotoImage(file='media/leuphana_logo_icon.png') #png for all other OS except windows
         root.iconphoto(False, photo)
     except tk.TclError:
         print("icon file not found.")
@@ -124,7 +124,7 @@ def ai_loop():
         print("Type 'exit' to quit.")
         print("--------------------------------------------------")
     #opening the prepared context
-    with open("../media/text/own text/music", "r") as file:
+    with open("media/text/own text/music", "r") as file:
         context = file.read()
 
     global user_question #declaring the variable global is important to distinct from function-only vars
