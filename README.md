@@ -13,7 +13,7 @@ pip install -r requirements.txt
 #### Usage
 I also put older and test versions of my code into this repository, but for the commplete final project, you just need to run the following file like this:
 ```
-python LeuphAI Q&A mixed with answer generation.py
+python main.py
 ```
 ---
 ENJOY!!!
